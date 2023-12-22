@@ -6,9 +6,9 @@
   "keywords": [ "node-red", "wled" ],
   "node-red": {
     "nodes": {
-      "wled get": "src\\wled-get.js",
-      "wled set": "src\\wled-set.js",
-      "wled-device": "src\\wled-device.js"
+      "wled get": "src/wled-get.js",
+      "wled set": "src/wled-set.js",
+      "wled-device": "src/wled-device.js"
     }
   }
 }
