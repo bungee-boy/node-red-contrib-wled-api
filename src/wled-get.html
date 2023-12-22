@@ -1,0 +1,74 @@
+<script type="text/javascript">
+    RED.nodes.registerType('wled get',{
+        category: 'wled',
+        color: '#a6bbcf',
+        defaults: {
+            name: { value: "" },
+            device: { value: "", type: "wled-device" },
+            scope: { value: "state" }
+        },
+        inputs: 1,
+        inputLabels: "trigger (any)",
+        outputs: 1,
+        outputLabels: "response (json)",
+        icon: "wled.png",
+        label: function() {
+            return this.name || "wled get";
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="wled get">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-device"><i class="fa fa-lightbulb-o"></i> Device</label>
+        <input type="text" id="node-input-device">
+    </div>
+    <div class="form-row">
+        <label for="node-input-scope"><i class="fa fa-filter"></i> Data Type</label>
+        <select id="node-input-scope">
+            <option value="state"> State</option>
+            <option value="info"> Info</option>
+            <option value="eff"> Effects</option>
+            <option value="pal"> Palettes</option>
+        </select>
+    </div>
+</script>
+
+<script type="text/html" data-help-name="wled get">
+    <p>Gets info of a WLED device using its api.</p>
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>payload</dt>
+        <dd>triggers the node to get the wled device data.</dd>
+    </dl>
+
+     <h3>Outputs</h3>
+     <dl class="message-properties">
+         <dt>payload<span class="property-type">object</span></dt>
+         <dd>api response from the wled device.</dd>
+     </dl>
+
+    <h3>Details</h3>
+        <p><code>msg.payload</code> is only used to trigger a get event,
+            it does not matter what it contains when used as an input.</p>
+        <p>However, <code>msg.payload</code> will contain the response
+            from the wled device on output.</p>
+        <p>Depending on what you set the <code>Data Type</code> option to,
+            the response will contain one of the 4 possible structures:</p>
+        <ul>
+            <li><a href="https://kno.wled.ge/interfaces/json-api/#state-object"> State</a> - Device status</li>
+            <li><a href="https://kno.wled.ge/interfaces/json-api/#info-object"> Info</a> - Device information</li>
+            <li>Effects - Array of effects</li>
+            <li>Palettes - Array of palettes</li>
+        </ul>
+
+    <h3>References</h3>
+        <ul>
+            <li><a href="https://kno.wled.ge/interfaces/json-api/">
+                WLED API docs</a> - full description of <code>msg.payload</code> output</li>
+        </ul>
+</script>

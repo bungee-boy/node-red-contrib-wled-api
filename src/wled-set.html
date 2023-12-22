@@ -1,0 +1,56 @@
+<script type="text/javascript">
+    RED.nodes.registerType('wled set',{
+        category: 'wled',
+        color: '#a6bbcf',
+        defaults: {
+            name: { value: "" },
+            device: { value: "", type: "wled-device" }
+        },
+        inputs: 1,
+        inputLabels: "input (json)",
+        outputs: 1,
+        outputLabels: "success (bool)",
+        icon: "wled.png",
+        label: function() {
+            return this.name || "wled set";
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="wled set">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-device"><i class="fa fa-lightbulb-o"></i> Device</label>
+        <input type="text" id="node-input-device">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="wled set">
+    <p>Sets the state of a WLED device using its api.</p>
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>payload<span class="property-type">object</span></dt>
+        <dd>the data to send to the wled device.</dd>
+    </dl>
+
+     <h3>Outputs</h3>
+     <dl class="message-properties">
+         <dt>payload<span class="property-type">boolean</span></dt>
+         <dd>success / fail response from wled device.</dd>
+     </dl>
+
+    <h3>Details</h3>
+        <p><code>msg.payload</code> should be an object containing values
+            to send to the wled device. A full list can be found
+            <a href="https://kno.wled.ge/interfaces/json-api/#state-object">here</a>.</p>
+        <p><code>msg.payload</code> output only returns a response
+            from the wled device stating if the set was successful or not.</p>
+    <h3>References</h3>
+        <ul>
+            <li><a href="https://kno.wled.ge/interfaces/json-api/">
+                WLED API docs</a> - full description of <code>msg.payload</code> input</li>
+        </ul>
+</script>

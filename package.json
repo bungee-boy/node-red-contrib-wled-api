@@ -1,0 +1,14 @@
+{
+  "name": "@bungee-boy/node-red-contrib-wled-api",
+  "version": "1.0.0",
+  "description": "Nodes to control Wled devices using it's http json api",
+  "dependencies": {},
+  "keywords": [ "node-red", "wled" ],
+  "node-red": {
+    "nodes": {
+      "wled get": "src\\wled-get.js",
+      "wled set": "src\\wled-set.js",
+      "wled-device": "src\\wled-device.js"
+    }
+  }
+}
